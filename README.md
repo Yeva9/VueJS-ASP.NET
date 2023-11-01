@@ -1,5 +1,5 @@
 # hyrule-job
-
+![gif](https://github.com/Yeva9/VueJS/assets/39997316/6ad087ef-73b7-41f3-8ae3-a6fcaf361a7f)
 ## Project setup
 ```
 npm install
