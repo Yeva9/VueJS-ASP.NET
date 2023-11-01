@@ -1,26 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app">
+    <p>{{ name }} {{ age }}</p>
+    <button @click="changeName('name')">Change name</button>
+    <button @click="changeAge('999')">Change age</button>
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import { defineComponent, reactive, ref, toRefs } from 'vue';
 
-export default {
+export default defineComponent({
   name: 'App',
-  components: {
-    HelloWorld
+  components: {},
+  setup() {
+    // const state = reactive({
+    //   name: 'Link',
+    //   age: 100 as number | string
+    // }) 
+
+    // state.name = 'surname';
+    // return { ...toRefs(state)}
+
+    const name = ref('link');
+    const age = ref<number | string>(15);
+    return {name, age};
+  },
+  methods: {
+    changeName(name: string) {
+      this.name = name;
+    },
+    changeAge(age: number | string) {
+      this.age = age;
+    }
   }
-}
+});
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
