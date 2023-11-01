@@ -1,4 +1,5 @@
-# Vue.js 3 
+# hyrule-job
+
 ## Project setup
 ```
 npm install
@@ -12,6 +13,11 @@ npm run serve
 ### Compiles and minifies for production
 ```
 npm run build
+```
+
+### Run unit tests
+```
+npm run test:unit
 ```
 
 ### Lints and fixes files
