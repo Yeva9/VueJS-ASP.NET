@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app container">
     <header>
       <div class="title">
         <img src="./assets/logo.svg" alt="site logo">
@@ -12,26 +12,30 @@
       </div>
     </header>
 
-    <JobsList :jobs="jobs" :order="order"/>
+    <AddJob/>
+    <JobsList :jobs="jobs" :order="order"/> 
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import JobsList from './components/JobsList.vue';
+import AddJob from './components/AddJob.vue';
 import Job from './types/Job';
 import OrderTerm from './types/OrderTerm';
 
 export default defineComponent({
   name: 'App',
-  components: { JobsList },
+  components: { JobsList, AddJob },
   setup() {
+    const addJobUrl = ref("https://blog.logrocket.com/use-vue-js-event-emitters-modify-component-data/")
+
     const jobs = ref<Job[]>([
-      { title: 'farm worker', location: 'lon lon ranch', salary: 30000, id: '1' },
-      { title: 'quarryman', location: 'death mountain', salary: 40000, id: '2' },
-      { title: 'flute player', location: 'the lost woods', salary: 35000, id: '3' },
-      { title: 'fisherman', location: 'lake hylia', salary: 21000, id: '4' },
-      { title: 'prison guard', location: 'gerudo valley', salary: 32000, id: '5' }
+      { title: 'farm worker', location: 'lon lon ranch', salary: 30000, description: "111", id: '1', isFav: false },
+      { title: 'quarryman', location: 'death mountain', salary: 40000, description: "111",  id: '2', isFav: true },
+      { title: 'flute player', location: 'the lost woods', salary: 35000, description: "111",  id: '3', isFav: true },
+      { title: 'fisherman', location: 'lake hylia', salary: 21000, description: "111",  id: '4', isFav: true },
+      { title: 'prison guard', location: 'gerudo valley', salary: 32000, description: "111",  id: '5', isFav: false }
     ]);
 
     const order = ref<OrderTerm>('title'); // current state
@@ -40,7 +44,12 @@ export default defineComponent({
       order.value = term;
     }
 
-    return { jobs, handleClick, order };
+    return { 
+      jobs,
+      handleClick,
+      order,
+      addJobUrl
+     };
   },
   methods: {}
 });
@@ -55,9 +64,9 @@ header {
   }
   button {
     margin: 0 10px;
-    color: #1195c9;
-    border: 3px solid #1195c9;
-    background: #d5f0ff;
+    color: #119ec9;
+    border: 2px solid #1195c9;
+    background: #e9f7ff;
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;

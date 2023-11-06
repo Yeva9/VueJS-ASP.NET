@@ -1,7 +1,7 @@
 <template>
 <div class="job-list">
     <transition-group name="list" tag="ul">
-        <li v-for="job in orderedJobs" :key="job.id">
+        <li v-for="job in orderedJobs" :key="job.id" :class="{fav: job.isFav}" @click="toggleFav(job)">
             <h2> {{ job.title }} in {{ job.location }}</h2>
             <div class="salary">
               <img src="../assets/dollar.svg" alt="dollar icon">
@@ -24,6 +24,7 @@ import Job from '@/types/Job';
 import OrderTerm from '@/types/OrderTerm';
 
 export default defineComponent({
+    name: 'JobsList',
     props: {
         jobs: {
             required: true,
@@ -42,11 +43,20 @@ export default defineComponent({
       });
 
       return { orderedJobs };
+    },
+    
+    methods: {
+      toggleFav(job: Job) {
+        job.isFav = !job.isFav
+      }
     }
 })
 </script>
 
 <style scoped>
+  .fav {
+    background: #ecffe7 !important;
+  }
   .job-list {
     max-width: 960px;
     margin: 40px auto;
