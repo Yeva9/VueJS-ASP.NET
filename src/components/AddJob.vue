@@ -1,7 +1,6 @@
 <template>
     <div class="row justify-content-md-end">
         <div class="col col-lg-2">
-
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
                 AddJob
@@ -19,7 +18,7 @@
                             <form>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput">Title</label>
-                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Title">
+                                    <input v-model="job.title" type="text" class="form-control" id="formGroupExampleInput" placeholder="Title">
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">Location</label>
@@ -51,10 +50,20 @@ import { defineComponent} from 'vue'
 
 export default defineComponent({
     name: 'AddJobModal',
+    data() {
+        return {
+            job: {
+                title: "",
+                location: "",
+                salary: "",
+                sescription: "",
+            }
+        }
+    },
     methods: {
         save()
         {
-            console.log("save");
+            console.log(this.job.title);
         }
     }
 })

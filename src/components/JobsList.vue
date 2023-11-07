@@ -2,7 +2,9 @@
 <div class="job-list">
     <transition-group name="list" tag="ul">
         <li v-for="job in orderedJobs" :key="job.id" :class="{fav: job.isFav}" @click="toggleFav(job)">
-            <h2> {{ job.title }} in {{ job.location }}</h2>
+            <router-link :to="{name: 'JobDetailes', params: { id: job.id }}">
+              <h2> {{ job.id }} {{ job.title }} in {{ job.location }}</h2>
+            </router-link>
             <div class="salary">
               <img src="../assets/dollar.svg" alt="dollar icon">
                 <p>{{ job.salary }}</p>
@@ -47,7 +49,7 @@ export default defineComponent({
     
     methods: {
       toggleFav(job: Job) {
-        job.isFav = !job.isFav
+        //job.isFav = !job.isFav
       }
     }
 })
