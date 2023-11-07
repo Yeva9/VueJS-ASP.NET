@@ -8,11 +8,7 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'JobDetailes',
-  data(){
-    return {
-      id: this.$route.params.id
-    }
-  }
+  props: ['id'],
 })
 </script>
 

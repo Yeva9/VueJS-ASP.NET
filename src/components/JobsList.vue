@@ -17,6 +17,10 @@
             </div>
         </li>
     </transition-group>
+    
+    <button @click="redirect">Redirect</button>
+    <button @click="back">Go back</button>
+    <button @click="forward">Go forward</button>
 </div>
 </template>
 
@@ -50,6 +54,15 @@ export default defineComponent({
     methods: {
       toggleFav(job: Job) {
         //job.isFav = !job.isFav
+      },
+      redirect() {
+        this.$router.push({name: 'home'})
+      },
+      back() {
+        this.$router.go(-1)
+      },
+      forward() {
+        this.$router.go(1)
       }
     }
 })

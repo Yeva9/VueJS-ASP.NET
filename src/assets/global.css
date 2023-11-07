@@ -7,10 +7,14 @@
 
 body {
   font-family: 'Open Sans';
-  background: #ece6d9;
+  background: #eceece;
 }
 
 h1 {
-  font-family: HyliaSerif;
-  letter-spacing: 4px;
+  font-family: 'Open Sans';
+  letter-spacing: 3px;
+}
+
+button:focus {
+  outline:0 !important;
 }
