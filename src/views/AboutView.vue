@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="text-center">
+    <h1>{{ header }}</h1>
   </div>
 </template>
 
@@ -9,9 +9,10 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'AboutView',
-  data(){
-    return {
-    }
+  setup() {
+    var header = "This is an about page";
+
+    return { header }
   }
 })
 </script>

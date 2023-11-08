@@ -1,6 +1,8 @@
 <template>
-  <h1>job detailes</h1>
-  <p>the job id is {{ id }}</p>
+  <div class="text-center">
+    <h1>job detailes</h1>
+    <p>the job id is {{ id }}</p>
+  </div>
 </template>
 
 <script lang="ts">
