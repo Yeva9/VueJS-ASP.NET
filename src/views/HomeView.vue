@@ -2,7 +2,7 @@
   <div class="app container">
     <header>
       <div class="title">
-        <img src="../assets/logo.svg" alt="site logo">
+        <!-- <img src="../assets/logo.svg" alt="site logo"> -->
         <h1> Hyrule Jobs </h1>
       </div>
       <div class="order">
@@ -13,6 +13,15 @@
     </header>
 
     <AddJob/>
+
+    <div v-if="error" class="text-center">{{ error }}</div>
+    <div v-if="jobs.length">
+      <JobsList :jobs="jobs" :order="order"/>
+    </div>
+    <div v-else>
+      <Spinner/>
+    </div>
+
     <JobsList :jobs="jobs" :order="order"/> 
   </div>
 </template>
@@ -20,23 +29,26 @@
 import { defineComponent, ref } from 'vue';
 import JobsList from '../components/JobsList.vue';
 import AddJob from '../components/AddJob.vue';
+import Spinner from '../components/Spinner.vue'
 import Job from '../types/Job';
 import OrderTerm from '../types/OrderTerm';
+import getJobs from '@/composables/getJobs';
 
 export default defineComponent({
   name: 'App',
-  components: { JobsList, AddJob },
+  components: { JobsList, AddJob, Spinner },
   setup() {
-    const addJobUrl = ref("https://blog.logrocket.com/use-vue-js-event-emitters-modify-component-data/")
+    // const jobs = ref<Job[]>([
+    //   { title: 'farm worker', location: 'lon lon ranch', salary: 30000, description: "111", id: '1', isFav: false },
+    //   { title: 'quarryman', location: 'death mountain', salary: 40000, description: "111",  id: '2', isFav: false },
+    //   { title: 'flute player', location: 'the lost woods', salary: 35000, description: "111",  id: '3', isFav: false },
+    //   { title: 'fisherman', location: 'lake hylia', salary: 21000, description: "111",  id: '4', isFav: false },
+    //   { title: 'prison guard', location: 'gerudo valley', salary: 32000, description: "111",  id: '5', isFav: false }
+    // ]);
 
-    const jobs = ref<Job[]>([
-      { title: 'farm worker', location: 'lon lon ranch', salary: 30000, description: "111", id: '1', isFav: false },
-      { title: 'quarryman', location: 'death mountain', salary: 40000, description: "111",  id: '2', isFav: false },
-      { title: 'flute player', location: 'the lost woods', salary: 35000, description: "111",  id: '3', isFav: false },
-      { title: 'fisherman', location: 'lake hylia', salary: 21000, description: "111",  id: '4', isFav: false },
-      { title: 'prison guard', location: 'gerudo valley', salary: 32000, description: "111",  id: '5', isFav: false }
-    ]);
-
+    const { jobs, error, load } = getJobs(); 
+    load();
+    
     const order = ref<OrderTerm>('title'); // current state
 
     const handleClick = (term: OrderTerm) => {
@@ -47,7 +59,7 @@ export default defineComponent({
       jobs,
       handleClick,
       order,
-      addJobUrl
+      error
      };
   }
 });
