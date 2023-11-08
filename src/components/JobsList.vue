@@ -44,14 +44,12 @@ export default defineComponent({
         })
       });
 
-      return { orderedJobs };
-    },
-    
-    methods: {
-      toggleFav(job: Job) {
-        //job.isFav = !job.isFav
+      const toggleFav = (job: Job) => {
+        job.isFav = !job.isFav
       }
-    }
+      
+      return { orderedJobs, toggleFav };
+    },
 })
 </script>
 

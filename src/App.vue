@@ -13,19 +13,18 @@
 
 <script lang="ts">
 import { defineComponent} from 'vue';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'App',
-  methods: {
-    redirect() {
-      this.$router.push({name: 'home'})
-    },
-    back() {
-      this.$router.go(-1)
-    },
-    forward() {
-      this.$router.go(1)
-    }
+  setup() {
+    const router = useRouter();
+
+    const redirect = () => { router.push({name: 'home'}) }
+    const back = () => { router.go(-1) }
+    const forward = () => { router.go(1) }
+
+    return { redirect, back, forward }
   }
 });
 </script>

@@ -50,21 +50,19 @@ import { defineComponent} from 'vue'
 
 export default defineComponent({
     name: 'AddJobModal',
-    data() {
-        return {
-            job: {
-                title: "",
-                location: "",
-                salary: "",
-                sescription: "",
+    setup() {
+        var job = {
+            title: "",
+            location: "",
+            salary: "",
+            sescription: "",
             }
+
+        const save = () => {
+            console.log(job.title);
         }
-    },
-    methods: {
-        save()
-        {
-            console.log(this.job.title);
-        }
+
+        return { job, save }
     }
 })
 </script>

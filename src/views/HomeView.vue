@@ -49,8 +49,7 @@ export default defineComponent({
       order,
       addJobUrl
      };
-  },
-  methods: {}
+  }
 });
 </script>
 
