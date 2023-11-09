@@ -1,13 +1,14 @@
 import { ref } from 'vue'
 
 const getJobs = () => {
+  const jobApiUrl ='http://localhost:3200/'
 
   const jobs = ref([])
   const error = ref(null)
 
   const load = async () => {
     try {
-      const data = await fetch('http://localhost:3000/jobs')
+      const data = await fetch(`${jobApiUrl}jobs`)
       if(!data.ok) {
         throw Error('no available data')
       }
