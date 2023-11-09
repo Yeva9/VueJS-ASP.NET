@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 
 const getJobs = () => {
-  const jobApiUrl ='http://localhost:3200/'
+  const jobApiUrl ='https://localhost:3200/api/'
 
   const jobs = ref([])
   const error = ref(null)

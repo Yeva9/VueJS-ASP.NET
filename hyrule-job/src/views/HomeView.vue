@@ -38,13 +38,13 @@ export default defineComponent({
   name: 'App',
   components: { JobsList, AddJob, Spinner },
   setup() {
-    // const jobs = ref<Job[]>([
-    //   { title: 'farm worker', location: 'lon lon ranch', salary: 30000, description: "111", id: '1', isFav: false },
-    //   { title: 'quarryman', location: 'death mountain', salary: 40000, description: "111",  id: '2', isFav: false },
-    //   { title: 'flute player', location: 'the lost woods', salary: 35000, description: "111",  id: '3', isFav: false },
-    //   { title: 'fisherman', location: 'lake hylia', salary: 21000, description: "111",  id: '4', isFav: false },
-    //   { title: 'prison guard', location: 'gerudo valley', salary: 32000, description: "111",  id: '5', isFav: false }
-    // ]);
+    const jobsX = ref<Job[]>([
+      { title: 'farm worker', location: 'lon lon ranch', salary: 30000, description: "111", id: 1, isFav: false },
+      { title: 'quarryman', location: 'death mountain', salary: 40000, description: "111",  id: 2, isFav: false },
+      { title: 'flute player', location: 'the lost woods', salary: 35000, description: "111",  id: 3, isFav: false },
+      { title: 'fisherman', location: 'lake hylia', salary: 21000, description: "111",  id: 4, isFav: false },
+      { title: 'prison guard', location: 'gerudo valley', salary: 32000, description: "111",  id: 5, isFav: false }
+    ]);
 
     const { jobs, error, load } = getJobs(); 
     load();
@@ -56,7 +56,7 @@ export default defineComponent({
     }
 
     return { 
-      jobs,
+      jobs: jobsX,
       handleClick,
       order,
       error
