@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CassandraCSharpDriver" Version="3.19.4" />
+    <PackageReference Include="EFCore.Cassandra" Version="2.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
+	<PackageReference Include="CassandraCSharpDriver" Version="3.19.4" />
   </ItemGroup>
 
   <ItemGroup>
