@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Job.Core.DTO;
+using Job.Core.Extensions;
 using Job.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static Job.Core.Extensions.ModelBuilderExtensions;
 
 namespace Job.API.Controllers
 {
@@ -24,9 +26,22 @@ namespace Job.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAllJobs()
+        public async Task<ActionResult> GetAllJobs([FromQuery] QueryParameters queryParameters)
         {
-            return Ok(await _context.Jobs.ToArrayAsync());
+            IQueryable<Core.Models.Job> jobs = _context.Jobs;
+
+            if (!string.IsNullOrEmpty(queryParameters.SearchTerm))
+            {
+                jobs = jobs.Where(
+                    p => p.Description.ToLower().Contains(queryParameters.SearchTerm.ToLower()) ||
+                         p.Loaction.ToLower().Contains(queryParameters.SearchTerm.ToLower()));
+            }
+
+            jobs = jobs
+                .Skip(queryParameters.Size * (queryParameters.Page - 1))
+                .Take(queryParameters.Size);
+
+            return Ok(await jobs.ToArrayAsync());
         }
 
         [HttpGet("{id}")]
