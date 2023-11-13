@@ -5,9 +5,11 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Job.API", "Job.API\Job.API.csproj", "{41EADB09-8DE9-4BBB-AE7D-B4F6EE2C84D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job.Core", "Job.Core\Job.Core.csproj", "{EF0FB2E8-648D-4C8F-8FA5-D80D328D688A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Job.Core", "Job.Core\Job.Core.csproj", "{EF0FB2E8-648D-4C8F-8FA5-D80D328D688A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job.Data", "Job.Data\Job.Data.csproj", "{41AC63F7-DD20-4887-8C32-696435CA4F2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Job.Data", "Job.Data\Job.Data.csproj", "{41AC63F7-DD20-4887-8C32-696435CA4F2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job.Services", "Job.Services\Job.Services.csproj", "{478DDC81-63F3-4304-9A0C-48839D9A1F63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{41AC63F7-DD20-4887-8C32-696435CA4F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41AC63F7-DD20-4887-8C32-696435CA4F2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41AC63F7-DD20-4887-8C32-696435CA4F2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{478DDC81-63F3-4304-9A0C-48839D9A1F63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{478DDC81-63F3-4304-9A0C-48839D9A1F63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{478DDC81-63F3-4304-9A0C-48839D9A1F63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{478DDC81-63F3-4304-9A0C-48839D9A1F63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
