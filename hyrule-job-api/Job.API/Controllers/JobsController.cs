@@ -37,6 +37,15 @@ namespace Job.API.Controllers
                          p.Loaction.ToLower().Contains(queryParameters.SearchTerm.ToLower()));
             }
 
+
+            if (!string.IsNullOrEmpty(queryParameters.SortBy))
+            {
+                if (typeof(Core.Models.Job).GetProperty(queryParameters.SortBy) != null)
+                {
+                    jobs = jobs.OrderByCustom(queryParameters.SortBy, queryParameters.SortOrder);
+                }
+            }
+
             jobs = jobs
                 .Skip(queryParameters.Size * (queryParameters.Page - 1))
                 .Take(queryParameters.Size);
