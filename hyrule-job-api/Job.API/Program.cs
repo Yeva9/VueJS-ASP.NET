@@ -1,3 +1,7 @@
+using AutoMapper;
+using Job.Data;
+using Job.Services.AutoMapper;
+
 namespace Job.API
 {
     public class Program
@@ -20,6 +24,22 @@ namespace Job.API
                            .WithHeaders("X-API-Vesrion");
                 });
             });
+
+            builder.Services.AddDbContext<JobContext>(options =>{});
+
+            //HttpContextAccessor
+            builder.Services.AddHttpContextAccessor();
+            builder.Services.AddHttpClient();
+
+
+            //Auto Mapper
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<ServiceModelsMap>();
+            });
+            builder.Services.AddSingleton<AutoMapper.IConfigurationProvider>(config);
+            builder.Services.AddSingleton<IMapper>(sp => new Mapper(config, sp.GetService));
+
 
             var app = builder.Build();
 

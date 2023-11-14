@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Job.Core\Job.Core.csproj" />
     <ProjectReference Include="..\Job.Data\Job.Data.csproj" />
+    <ProjectReference Include="..\Job.Services\Job.Services.csproj" />
   </ItemGroup>
 
 </Project>
